@@ -7,5 +7,6 @@ A Postman Clone to explore how Electron JS works.
 ```bash
 git clone git@github.com:James-D-Wood/postma-clone.git
 cd postma-clone
+npm install
 npm start
 ```

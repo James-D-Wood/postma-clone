@@ -1,0 +1,15 @@
+{
+  "name": "postma-clone",
+  "version": "1.0.0",
+  "description": "A Postman Clone Project to Explore Electron JS",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Wood",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^33.1.0"
+  }
+}

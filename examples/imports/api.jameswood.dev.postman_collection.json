@@ -1,0 +1,38 @@
+{
+  "info": {
+    "_postman_id": "b0a234f6-7fdb-4740-9f92-c5082218e3a1",
+    "name": "api.jameswood.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "16170842",
+    "_collection_link": "https://grey-resonance-241100.postman.co/workspace/PO-App~67861d38-e2a4-4b71-b572-57ba740995db/collection/16170842-b0a234f6-7fdb-4740-9f92-c5082218e3a1?action=share&source=collection_link&creator=16170842"
+  },
+  "item": [
+    {
+      "name": "Meta",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.jameswood.dev/meta",
+          "protocol": "https",
+          "host": ["api", "jameswood", "dev"],
+          "path": ["meta"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Recipes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{API}}/api/v1/recipes",
+          "host": ["{{API}}"],
+          "path": ["api", "v1", "recipes"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

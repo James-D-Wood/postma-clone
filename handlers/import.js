@@ -1,5 +1,5 @@
 const { DB } = require("../db/db.js");
-const { Collection } = require("../models/request.js");
+const { Collection, Item, Request } = require("../models/request.js");
 
 class Importer {
   static import(postmanImport) {
@@ -15,17 +15,48 @@ class Importer {
 
     // parse
     let collectionName;
+    const items = [];
+
     try {
       collectionName = postmanImport.info.name;
       if (!collectionName) {
         throw new Error(".info.name is nil");
+      }
+      for (let i = 0; i < postmanImport.item.length; i++) {
+        const el = postmanImport.item[0];
+
+        // TODO: there definitely must be a better way to do this in JS
+        if (!el.name) {
+          throw new Error(".item[].name is nil");
+        }
+        if (!el.request) {
+          throw new Error(".item[].request is nil");
+        }
+        if (!el.request.method) {
+          throw new Error(".item[].request.method is nil");
+        }
+        if (!el.request.url) {
+          throw new Error(".item[].request.url is nil");
+        }
+        if (!el.request.url.raw) {
+          throw new Error(".item[].request.url.raw is nil");
+        }
+
+        const url = el.request.url.raw;
+        const method = el.request.method;
+        const headers = el.request.header ?? [];
+        const body = el.request.body ?? null;
+
+        const request = new Request(url, method, headers, body);
+        const item = new Item(el.name, request);
+        items.push(item);
       }
     } catch (err) {
       throw new Error("error parsing import:", err);
     }
 
     // append
-    const importCollection = new Collection(collectionName, []);
+    const importCollection = new Collection(collectionName, items);
     collections.push(importCollection);
 
     // write to "db"

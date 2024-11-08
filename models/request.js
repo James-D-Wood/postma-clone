@@ -10,11 +10,13 @@ function Item(name, request) {
   this.request = request;
 }
 
-function Request(url, method, header, data) {
+function Request(url, method, header, body) {
   this.url = url;
   this.method = method;
   this.header = header;
-  this.data = data;
+  this.body = body;
 }
 
 exports.Collection = Collection;
+exports.Item = Item;
+exports.Request = Request;
